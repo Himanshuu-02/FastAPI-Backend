@@ -5,3 +5,23 @@ body { margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: 
 
 /* Ensure background from App.css fills */
 #root { background: transparent; }
+
+/* Fix white half screen issue on mobile */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make tagline full width on small screens */
+.tagline-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
