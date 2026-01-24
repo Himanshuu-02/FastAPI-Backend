@@ -75,3 +75,33 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
+
+
+/* =========================
+   TAGLINE – MOBILE FIXES
+   ========================= */
+@media (max-width: 768px) {
+
+  .tagline-card {
+    padding: 18px;
+  }
+
+  .tagline-content h3 {
+    font-size: 18px;
+  }
+
+  .tagline-content p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .company-badge {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 14px;
+  }
+
+  .company-name {
+    font-size: 16px;
+  }
+}
