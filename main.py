@@ -9,8 +9,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React / Next.js
-    allow_credentials=True,
+   # allow_origins=["http://localhost:3000"],  # React / Next.js
+   # allow_credentials=True,
+   allow_origins=["*"],
+   allow_credentials=False,
     allow_methods=["*"],  # GET, POST, PUT, DELETE, OPTIONS
     allow_headers=["*"],
 )
