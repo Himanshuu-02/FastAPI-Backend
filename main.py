@@ -1,10 +1,19 @@
 from fastapi import Depends,FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from modals import Product
 from database import session,engine
 import database_models
 from sqlalchemy.orm import Session
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # React / Next.js
+    allow_credentials=True,
+    allow_methods=["*"],  # GET, POST, PUT, DELETE, OPTIONS
+    allow_headers=["*"],
+)
 database_models.Base.metadata.create_all(bind= engine)
 @app.get("/")
 
@@ -51,7 +60,7 @@ def get_all_products(db:Session= Depends(get_db)):
        #db_query
      
 
-@app.get("/product/{id}")
+@app.get("/products/{id}")
 # def get_all_productby_id(id:int):      #this code mainly use for get the data by id and this give that which stay in the list form in our code now we create the same function where we get the data from database
 #       for product in products:
 #             if(product.id==id):
@@ -68,7 +77,7 @@ def get_all_productby_id(id:int, db:Session=Depends(get_db)):
 
 
 # #write a post commant to create/add a product from the given list
-@app.post("/product")
+@app.post("/products")
 # def add_new_product(product:Product):
 #       products.append(product)
 #       return product
@@ -82,7 +91,7 @@ def add_new_product(product:Product,db:Session=Depends(get_db)):
 
       
 #write a put command for update a product in the give data in list 
-@app.put("/product")
+@app.put("/products/{id}")
 # def update_product_data(id:int,product:Product):
 #       for i in range(len(products)):
 #             if(products[i].id==id):
@@ -106,7 +115,7 @@ def update_product_data(id:int,product:Product, db:Session=Depends(get_db)):
             
 
 #write command to delete a product in the already written database which is written in the list form not in the database connected
-@app.delete("/product")
+@app.delete("/products/{id}")
 # def delete_product(id:int):
 #       for i in range(len(products)):
 #              if(products[i].id==id):
