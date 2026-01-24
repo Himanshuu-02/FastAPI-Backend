@@ -2,7 +2,7 @@ from fastapi import Depends,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from modals import Product
 from database import session,engine
-import database_models
+import database_models as database_models
 from sqlalchemy.orm import Session
 
 app = FastAPI()
