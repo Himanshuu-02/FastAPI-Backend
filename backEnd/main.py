@@ -16,7 +16,7 @@ app.add_middleware(
     allow_methods=["*"],  # GET, POST, PUT, DELETE, OPTIONS
     allow_headers=["*"],
 )
-database_models.Base.metadata.create_all(bind= engine)
+#database_models.Base.metadata.create_all(bind= engine)
 @app.get("/")
 
 def greet():
@@ -41,14 +41,14 @@ def get_db():
             db.close() # close the connection 
 
 
-def init_db():       #by this function we can add our data in the used database like postgreql 
-      db= session()
-      count= db.query(database_models.Product).count
-      if(count==0):
-            for product in products:
-                  db.add(database_models.Product(**product.model_dump()))
-            db.commit()
-init_db()
+# def init_db():       #by this function we can add our data in the used database like postgreql 
+#       db= session()
+#       count= db.query(database_models.Product).count
+#       if(count==0):
+#             for product in products:
+#                   db.add(database_models.Product(**product.model_dump()))
+#             db.commit()
+# init_db()
 
 @app.get("/products")
 def get_all_products(db:Session= Depends(get_db)):
