@@ -4,7 +4,7 @@ import "./App.css";
 import TaglineSection from "./TaglineSection";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://fastapi-backend-2-3pwc.onrender.com",
 });
 
 function App() {
