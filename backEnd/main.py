@@ -4,6 +4,7 @@ from modals import Product
 from database import session,engine
 import database_models as database_models
 from sqlalchemy.orm import Session
+from time import time
 
 app = FastAPI()
 
@@ -16,6 +17,13 @@ app.add_middleware(
     allow_methods=["*"],  # GET, POST, PUT, DELETE, OPTIONS
     allow_headers=["*"],
 )
+@app.middleware("http")
+async def add_process_time_header(request, call_next):
+      start = time()
+      response = await call_next(request)
+      process_time = time() - start
+      response.headers["X-Process-Time"] = str(process_time)
+      return response
 #database_models.Base.metadata.create_all(bind= engine)
 @app.get("/")
 

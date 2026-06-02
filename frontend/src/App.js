@@ -50,6 +50,7 @@ function App() {
       const res = await api.get("/products/");
       setProducts(res.data);
       setError("");
+      console.log(setProducts)
     } catch (err) {
       setError("Failed to fetch products");
     }
