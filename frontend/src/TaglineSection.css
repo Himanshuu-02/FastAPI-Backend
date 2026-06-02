@@ -83,11 +83,16 @@
 @media (max-width: 768px) {
 
   .tagline-card {
+    width: 100%;
+    max-width: 100%;
     padding: 18px;
+    overflow: hidden;
   }
 
   .tagline-content h3 {
     font-size: 18px;
+    line-height: 1.2;
+    word-break: break-word;
   }
 
   .tagline-content p {
@@ -96,6 +101,8 @@
   }
 
   .company-badge {
+    width: 100%;
+    max-width: 100%;
     flex-direction: column;
     gap: 4px;
     padding: 10px 14px;
